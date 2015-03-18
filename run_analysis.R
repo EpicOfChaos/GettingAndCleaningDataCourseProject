@@ -14,7 +14,8 @@ run <- function(){
 #Downloads the file if the zip is not provided. Will unzip fresh data everytime.
 downloadDataIfNeeded <- function(){
     if(!file.exists("./getdata-projectfiles-UCI HAR Dataset.zip")){
-        message("getdata-projectfiles-UCI HAR Dataset.zip does not exist, downloading getdata-projectfiles-UCI HAR Dataset.zip")
+        message("getdata-projectfiles-UCI HAR Dataset.zip does not exist, 
+                downloading getdata-projectfiles-UCI HAR Dataset.zip")
         dataUrl = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
         download.file(dataUrl, destfile="./getdata-projectfiles-UCI HAR Dataset.zip")
     }
@@ -38,9 +39,12 @@ mergeTrainingAndTestData <- function(){
 
 #Combines the Subject, Label and Angular Velocities together into a single dataset.
 mergeAndSummarizeData <- function(identity){
-    testX <- read.table(paste("./UCI HAR Dataset/",identity,"/","X_",identity,".txt", sep="")) #read.fwf("./data/UCI HAR Dataset/test/X_test.txt", widths=rep(17,528))
-    testLabel <- read.csv(paste("./UCI HAR Dataset/",identity,"/","y_",identity,".txt", sep=""), header=FALSE, sep=" ")
-    testSubject <- read.csv(paste("./UCI HAR Dataset/",identity,"/","subject_",identity,".txt", sep=""), header=FALSE)
+    testX <- read.table(paste("./UCI HAR Dataset/",identity,"/",
+                              "X_",identity,".txt", sep=""))
+    testLabel <- read.csv(paste("./UCI HAR Dataset/",identity,"/",
+                                "y_",identity,".txt", sep=""), header=FALSE, sep=" ")
+    testSubject <- read.csv(paste("./UCI HAR Dataset/",identity,"/",
+                                  "subject_",identity,".txt", sep=""), header=FALSE)
     
     if(nrow(testSubject) != nrow(testLabel)
        || nrow(testSubject) != nrow(testX)){
@@ -48,8 +52,10 @@ mergeAndSummarizeData <- function(identity){
     }
     
     testMerged <- cbind(testSubject, testLabel)
-    testMerged <- transform(testMerged, MeanTriaxialVelocity=apply(testX, 1, mean, na.rm=TRUE))
-    testMerged <- transform(testMerged, StandardDeviationTriaxialVelocity=apply(testX, 1, sd, na.rm=TRUE))
+    testMerged <- transform(testMerged, 
+                            MeanTriaxialVelocity=apply(testX, 1, mean, na.rm=TRUE))
+    testMerged <- transform(testMerged, 
+                            StandardDeviationTriaxialVelocity=apply(testX, 1, sd, na.rm=TRUE))
     testMerged
 }
 
@@ -68,7 +74,8 @@ renameVariables <- function(data){
 #Renames the Activities Label
 renameActivities <- function(data){
     data$Activity <-factor(data$Activity)
-    levels(data$Activity) <- c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING")
+    levels(data$Activity) <- c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", 
+                               "SITTING", "STANDING", "LAYING")
     data
 }
 
