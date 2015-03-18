@@ -2,6 +2,7 @@
 =====================================
 Pre-req
 * In order to run this script you need to have the dplyr and reshape2 libraries installed.
+* Copy the run_analysis.R script to your working directory.
 =====================================
 How to run the script
 * To run the script all you need to do is source the script, place the script in your working directory and run the following command. "source("run_analysis.R")"
