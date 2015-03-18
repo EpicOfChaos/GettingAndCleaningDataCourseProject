@@ -1,13 +1,15 @@
 # GettingAndCleaningDataCourseProject
 =====================================
-Pre-req
+## Pre-req
 * In order to run this script you need to have the dplyr and reshape2 libraries installed.
 * Copy the run_analysis.R script to your working directory.
+
 =====================================
-How to run the script
+## How to run the script
 * To run the script all you need to do is source the script, place the script in your working directory and run the following command. "source("run_analysis.R")"
+
 =====================================
-The Process
+## The Process
 1. If "getdata-projectfiles-UCI HAR Dataset.zip" is NOT in the working directory it will download the zip data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 2. If the zip has been extracted, it deletes the currently extracted data so that it can unzip a fresh copy of the data.
 3. Next it will begin to merge the data sets together. 
